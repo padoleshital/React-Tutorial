@@ -40,12 +40,13 @@ const styleCard ={
   backgroundColor:"#f0f0f0"
 }
 
-const Restaurentcard = () =>{
+// We use Destructuring While using props
+const Restaurentcard = ({resName,cuisine}) =>{
   return(
     <div className="rest-card" style={styleCard}>
       <img src="https://t4.ftcdn.net/jpg/04/90/19/23/240_F_490192375_qg0In7Wbt4dh5zx18yEazvzPYydN2YOO.jpg"/>      
-      <h3>Meghana Food</h3>
-      <h4>North Indian Test</h4>
+      <h3>{resName}</h3>
+      <h4>{cuisine}</h4>
       <h4>4.4 Star</h4>
       <h4>38 Min</h4>
     </div>
@@ -62,15 +63,9 @@ const Body = () =>{
         <input type="text"/>
       </div>
       <div className="res-container">
-        <Restaurentcard/>
-        <Restaurentcard/>
-        <Restaurentcard/>
-        <Restaurentcard/>
-        <Restaurentcard/>
-        <Restaurentcard/>
-        <Restaurentcard/>  
-        <Restaurentcard/>
-
+        <Restaurentcard resName="meghana Food" cuisine="Biryani"/>
+        <Restaurentcard resName="KFC" cuisine="Burgur" />
+        <Restaurentcard resName="Radhe dhokla" cuisine="Sepcial dokla" />
       </div>
     </div>
   )
