@@ -41,18 +41,127 @@ const styleCard ={
 }
 
 // We use Destructuring While using props
-const Restaurentcard = ({resName,cuisine}) =>{
+const Restaurentcard = (props) =>{
+  const {resData} = props;
   return(
     <div className="rest-card" style={styleCard}>
-      <img src="https://t4.ftcdn.net/jpg/04/90/19/23/240_F_490192375_qg0In7Wbt4dh5zx18yEazvzPYydN2YOO.jpg"/>      
-      <h3>{resName}</h3>
-      <h4>{cuisine}</h4>
-      <h4>4.4 Star</h4>
-      <h4>38 Min</h4>
+      <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+ resData.icloudinaryImageId}/>      
+      <h3>{resData.info.name}</h3>
+      <h4>{resData.info.cuisines.join(",")}</h4>
+      <h4>Rating {resData.info.avgRating}</h4>
+      <h4>{resData.info.costForTwo}</h4>
+      <h4>{resData.info.sla.deliveryTime} Min</h4>
     </div>
   )
 }
 
+const resObj=    {
+  info: {
+    id: "74453",
+    name: "Domino's Pizza",
+    cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+    locality: "Sheetal Shopping Square",
+    areaName: "Athwa",
+    costForTwo: "₹400 for two",
+    cuisines: [
+      "Pizzas",
+      "Italian",
+      "Pastas",
+      "Desserts"
+    ],
+    avgRating: 4,
+    veg: true,
+    feeDetails: {
+      restaurantId: "74453",
+      fees: [
+        {
+          "name": "BASE_DISTANCE",
+          "fee": 1900
+        },
+        {
+          "name": "BASE_TIME"
+        },
+        {
+          "name": "ANCILLARY_SURGE_FEE"
+        }
+      ],
+      totalFee: 1900
+    },
+    parentId: "2456",
+    avgRatingString: "4.0",
+    totalRatingsString: "1K+",
+    sla: {
+      deliveryTime: 25,
+      serviceability: "SERVICEABLE",
+      slaString: "25 mins",
+      iconType: "ICON_TYPE_EMPTY"
+    },
+    availability: {
+      nextCloseTime: "2023-11-16 01:00:00",
+      opened: true
+    },
+    badges: {
+      imageBadges: [
+        {
+          "imageId": "v1695133679/badges/Pure_Veg111.png",
+          "description": "pureveg"
+        }
+      ]
+    },
+    isOpen: true,
+    type: "F",
+    badgesV2: {
+      entityBadges: {
+        imageBased: {
+          badgeObject: [
+            {
+              attributes: {
+                description: "pureveg",
+                imageId: "v1695133679/badges/Pure_Veg111.png"
+              }
+            }
+          ]
+        },
+        textBased: {
+          
+        },
+        "textExtendedBadges": {
+          
+        }
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "30% OFF",
+      "subHeader": "UPTO ₹75"
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+        "lottie": {
+          
+        },
+        "video": {
+          
+        }
+      }
+    },
+    "reviewsSummary": {
+      
+    },
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {
+      
+    }
+  },
+  "analytics": {
+    
+  },
+  "cta": {
+    "link": "https://www.swiggy.com/restaurants/dominos-pizza-sheetal-shopping-square-athwa-surat-74453",
+    "type": "WEBLINK"
+  }
+}
 
 
 const Body = () =>{
@@ -63,9 +172,7 @@ const Body = () =>{
         <input type="text"/>
       </div>
       <div className="res-container">
-        <Restaurentcard resName="meghana Food" cuisine="Biryani"/>
-        <Restaurentcard resName="KFC" cuisine="Burgur" />
-        <Restaurentcard resName="Radhe dhokla" cuisine="Sepcial dokla" />
+        <Restaurentcard resData ={resObj}/>
       </div>
     </div>
   )
